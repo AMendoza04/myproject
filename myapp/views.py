@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from.models import Feature
+from .models import Feature
 # Create your views here.
 context = {
     'name': 'Daniel',
@@ -34,30 +34,6 @@ def counter(request):
 
 def welcome(request):
 
-    feature1 = Feature()
-    feature1.id = 0
-    feature1.name = 'Fast 1'
-    feature1.details = 'Our service is very quick'
-    feature1.isTrue = True
-
-    feature2 = Feature()
-    feature2.id = 1
-    feature2.name = 'Fast 2'
-    feature2.details = 'Our service is very quick'
-    feature2.isTrue = True
-
-    feature3 = Feature()
-    feature3.id = 2
-    feature3.name = 'Fast 3'
-    feature3.details = 'Our service is very quick'
-    feature3.isTrue = False
-
-    feature4 = Feature()
-    feature4.id = 3
-    feature4.name = 'Fast 4'
-    feature4.details = 'Our service is very quick'
-    feature4.isTrue = True
-
-
-    features = [feature1,feature2,feature3,feature4]
+    features = Feature.objects.all()
     return render(request, 'index.html', {'features': features})
+
